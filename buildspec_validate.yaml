@@ -15,13 +15,13 @@ phases:
   build:
     commands:
       - terraform init -input=false
-      - terraform plan -input=false -out=tfplan
+      - terraform validate -input=false -out=tfplan
   post_build:
     commands:
-      - echo "Completed Terraform plan phase"
+      - echo "Completed Terraform validate phase"
 
 artifacts:
   files:
-    - tfplan
+    - tfvalidate
     - .terraform/**/*
     - '**/*'
