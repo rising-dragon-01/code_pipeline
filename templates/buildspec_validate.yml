@@ -26,7 +26,7 @@ phases:
       - echo "## TERRAFORM INIT: Initialize the Terraform Workspace"
       - terraform init -input=false
       - echo "## VALIDATION: Starting Terraform validation..."
-      - terraform validate
+      - terraform validate -input=false
   post_build:
     commands:
       - echo "Terraform validation phase completed successfully."
