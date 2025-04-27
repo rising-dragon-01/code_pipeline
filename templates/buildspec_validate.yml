@@ -5,32 +5,28 @@
 #Amazon Web Services, Inc. or Amazon Web Services EMEA SARL or both.
 
 version: 0.2
+
 phases:
   install:
     runtime-versions:
-      python: 3.9
-      golang: 1.14
+      python: 3.8
     commands:
-      - echo "Installing Terraform..."
-      - curl -s -qL -o terraform.zip https://releases.hashicorp.com/terraform/${TF_VERSION}/terraform_${TF_VERSION}_linux_amd64.zip
-      - unzip -o terraform.zip
-      - mv terraform /bin
-      - rm terraform.zip
-      - yum update -y
+      - wget https://releases.hashicorp.com/terraform/1.0.11/terraform_1.0.11_linux_amd64.zip
+      - unzip terraform_1.0.11_linux_amd64.zip
+      - mv terraform /usr/local/bin/
   pre_build:
     commands:
-      - echo "Starting Terraform validation phase..."
+      - echo "Starting Terraform validate phase..."
       - terraform --version
   build:
     commands:
-      - echo "## TERRAFORM INIT: Initialize the Terraform Workspace"
       - terraform init -input=false
-      - echo "## VALIDATION: Starting Terraform validation..."
-      - terraform validate -input=false
+      - terraform validate
   post_build:
     commands:
-      - echo "Terraform validation phase completed successfully."
+      - echo "Completed Terraform validate phase"
 
 artifacts:
   files:
+    - .terraform/**/*
     - '**/*'
