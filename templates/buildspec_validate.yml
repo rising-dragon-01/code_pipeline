@@ -23,7 +23,6 @@ phases:
       - terraform --version
   build:
     commands:
-      - cd ${CODEBUILD_SRC_DIR}/${CODE_SRC_DIR}
       - echo "## TERRAFORM INIT: Initialize the Terraform Workspace"
       - terraform init -input=false
       - echo "## VALIDATION: Starting Terraform validation..."
