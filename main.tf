@@ -9,7 +9,9 @@ terraform {
   }
 
 }
-
+provider "aws" {
+  region = "us-east-1"
+}
 resource "aws_instance" "test_vm" {
   ami           = "ami-0c50b6f7dc3701ddd"
   instance_type = "t2.micro"
