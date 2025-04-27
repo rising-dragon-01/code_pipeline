@@ -20,8 +20,8 @@ phases:
     commands:
       - echo "Completed Terraform validate phase"
 
-# artifacts:
-#   files:
-#     - tfvalidate
-#     - .terraform/**/*
-#     - '**/*'
+artifacts:
+  files:
+    - tfvalidate
+    - .terraform/**/*
+    - '**/*'
